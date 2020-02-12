@@ -14,7 +14,7 @@ import { MustMatch } from '../helpers/must-match.validator';
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-
+  admin = false;
 
 
   constructor(private userService: UserService, private router: RouterModule, private formBuilder: FormBuilder) { }
@@ -33,6 +33,7 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
+      role: ['user'],
       acceptTerms: [false, Validators.requiredTrue]
     }, {
       validator: MustMatch('password', 'confirmPassword')
