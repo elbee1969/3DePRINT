@@ -1,6 +1,6 @@
 export class UserDetail {
     emailId : string;
-    civility : string;
+    gender : string;
     firstName : string;
     lastName : string;
     dateOfBirth : Date;
