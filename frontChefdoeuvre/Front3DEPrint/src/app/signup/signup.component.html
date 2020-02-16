@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label>Date de naissance</label>
                     <input type="date" formControlName="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
-                    <div *ngIf="submitted && f.dateOfBirth.errors || dateOfBirth.dirty" class="invalid-feedback">
+                    <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
                         <div *ngIf="f.dateOfBirth.errors.required">date de naissance requise</div>
                     </div>
                 </div>

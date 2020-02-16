@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { UserDetail } from '../classes/user-detail';
 import { UserService } from '../services/user.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from '../helpers/must-match.validator';
@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   admin = false;
 
 
-  constructor(private userService: UserService, private router: RouterModule, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
@@ -38,7 +38,8 @@ export class SignupComponent implements OnInit {
       acceptTerms: [false, Validators.requiredTrue]
     }, {
       validator: MustMatch('password', 'confirmPassword')
-    });
+    },
+    );
   }
 
   // convenience getter for easy access to form fields
@@ -54,6 +55,7 @@ export class SignupComponent implements OnInit {
 
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+        this.router.navigate(['/login']);
   }
 
   onReset() {

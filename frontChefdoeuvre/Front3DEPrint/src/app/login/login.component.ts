@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   loading = false;
   submitted = false;
-  returnUrl: string;
+  //returnUrl: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +41,6 @@ export class LoginComponent implements OnInit {
 
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
-
+    this.router.navigate(['/profile/id']);
   }  
 }
