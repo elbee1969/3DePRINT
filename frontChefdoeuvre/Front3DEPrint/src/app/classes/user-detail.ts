@@ -5,11 +5,12 @@ export class UserDetail {
     lastName : string;
     dateOfBirth : Date;
     password : string;
-    confirPassword : string;
+    email : string;
     streetNumber : number;
     street : string;
     town : string;
     zipCode : number;
     country : string;
     role : string;
+    token: string;
 }

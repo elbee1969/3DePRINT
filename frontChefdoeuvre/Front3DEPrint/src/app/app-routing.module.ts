@@ -20,9 +20,10 @@ export const routes: Routes = [
     component: SignupComponent
   },
   {
-    path : 'profile/adminId',
+    path : 'profile/id',
     component : ProfileComponent
-  }
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

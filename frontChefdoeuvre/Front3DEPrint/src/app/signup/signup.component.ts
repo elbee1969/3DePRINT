@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDetail } from '../classes/user-detail';
+//import { UserDetail } from '../classes/user-detail';
 import { UserService } from '../services/user.service';
 import { RouterModule } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import { MustMatch } from '../helpers/must-match.validator';
 })
 
 export class SignupComponent implements OnInit {
-  registerForm: FormGroup;
+  registerForm: FormGroup = new FormGroup({});
   submitted = false;
   admin = false;
 
@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
       gender: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
       streetNumber: ['', Validators.required],
       street: ['', Validators.required],
       town: ['', Validators.required],

@@ -21,18 +21,25 @@
                         <div *ngIf="f.gender.errors.required">Un genre est requis</div>
                     </div>
                 </div>
-                <div class="form-group col-5">
+                <div class="form-group col-4">
                     <label>Prénom</label>
                     <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                         <div *ngIf="f.firstName.errors.required">Prénom requis</div>
                     </div>
                 </div>
-                <div class="form-group col-5">
+                <div class="form-group col-4">
                     <label>Nom</label>
                     <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                         <div *ngIf="f.lastName.errors.required">Nom requis</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date de naissance</label>
+                    <input type="date" formControlName="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
+                    <div *ngIf="submitted && f.dateOfBirth.errors || dateOfBirth.dirty" class="invalid-feedback">
+                        <div *ngIf="f.dateOfBirth.errors.required">date de naissance requise</div>
                     </div>
                 </div>
             </div>
