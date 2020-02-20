@@ -1,5 +1,5 @@
 export class UserDetail {
-    emailId : string;
+    Id : number;
     gender : string;
     firstName : string;
     lastName : string;

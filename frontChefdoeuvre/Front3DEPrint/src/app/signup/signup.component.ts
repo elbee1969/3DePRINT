@@ -15,12 +15,17 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   submitted = false;
   admin = false;
-
+  msgPwd1 = "Mot de passe requis";
+  msgPwd2 = "Le mot de passe doit faire au moins 8 charactères";
+  msgPwd3 = "Le mot de passe ne doit pas faire plus de 12 charactères";
+  msgPwd4 = "le mot de passe doit contenir au minimum une lettre miniscule, une lettre majuscule, un nombre et un caractère spécial (@, !, %, *, ? ou &)";
 
   constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
+  passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}";
 
   ngOnInit() {
+    
     this.registerForm = this.formBuilder.group({
       gender: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -32,7 +37,7 @@ export class SignupComponent implements OnInit {
       zipCode: ['', Validators.required],
       country: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12), Validators.pattern(this.passwordPattern)]],
       confirmPassword: ['', Validators.required],
       role: ['user'],
       acceptTerms: [false, Validators.requiredTrue]
