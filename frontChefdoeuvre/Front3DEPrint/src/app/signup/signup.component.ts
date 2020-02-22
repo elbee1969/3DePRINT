@@ -5,6 +5,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from '../helpers/must-match.validator';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,14 +20,17 @@ export class SignupComponent implements OnInit {
   msgPwd2 = "Le mot de passe doit faire au moins 8 charactères";
   msgPwd3 = "Le mot de passe ne doit pas faire plus de 12 charactères";
   msgPwd4 = "le mot de passe doit contenir au minimum une lettre miniscule, une lettre majuscule, un nombre et un caractère spécial (@, !, %, *, ? ou &)";
+  msgUsr1 = "Nom d'utilisateur requis";
+  msgUsr2 = "Le mot de passe doit faire au moins 8 charactères";
 
-  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) { }
 
   passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}";
 
   ngOnInit() {
     
     this.registerForm = this.formBuilder.group({
+      userName: ['', Validators.required],
       gender: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -57,7 +61,11 @@ export class SignupComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+    this.userService.CreateUser(this.registerForm.value).subscribe(res => {
+      console.log('Utilisateur ajouté !');
+    })
 
+    //this.http.post<object>('http://localhost:9000/3DePrint/createUser', this.registerForm.value, { headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
         this.router.navigate(['/login']);

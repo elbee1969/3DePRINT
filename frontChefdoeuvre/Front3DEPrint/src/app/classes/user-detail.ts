@@ -1,5 +1,5 @@
 export class UserDetail {
-    Id : number;
+    userName: string;
     gender : string;
     firstName : string;
     lastName : string;
@@ -12,5 +12,4 @@ export class UserDetail {
     zipCode : number;
     country : string;
     role : string;
-    token: string;
 }
