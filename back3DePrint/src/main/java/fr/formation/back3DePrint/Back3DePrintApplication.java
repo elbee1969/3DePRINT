@@ -8,6 +8,7 @@ public class Back3DePrintApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Back3DePrintApplication.class, args);
+		System.out.println("hello!");
 	}
 
 }
