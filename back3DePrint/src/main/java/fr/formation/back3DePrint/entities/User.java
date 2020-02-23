@@ -25,7 +25,7 @@ public class User {
     private Long id;
     
     @Column(length=255, nullable = false, unique = true)
-    private String username ;	
+    private String userName ;	
     
     @Column(length=5, nullable = false)
     private String gender ;
@@ -85,14 +85,6 @@ public class User {
     private boolean enabled;
 
 
-	
-
-
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
-	
-
     /**
      * Creates a new custom user.
      *
@@ -101,11 +93,11 @@ public class User {
      * @param roles    some roles
      * @param enabled  {@code true} if enabled; {@code false} otherwise
      */
-	public User(Long id, String username, String gender, String firstName, String lastName, Date dateOfBirth,
+	public User(Long id, String userName, String gender, String firstName, String lastName, Date dateOfBirth,
 			String password, String email, @NotBlank int streetNumber, String street, String town, int zipCode,
 			String country, Set<Role> roles, boolean enabled) {
 		this.id = id;
-		this.username = username;
+		this.userName = userName;
 		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -122,6 +114,10 @@ public class User {
 	}
 
 
+	public User() {
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -132,13 +128,13 @@ public class User {
 	}
 
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 

@@ -3,7 +3,7 @@ package fr.formation.back3DePrint.dto;
 import java.util.Date;
 
 public interface UserViewDto {
-	Long getId();
+	//Long getId();
 	String getUserName();
 	String getGender();
 	String getFirstName();

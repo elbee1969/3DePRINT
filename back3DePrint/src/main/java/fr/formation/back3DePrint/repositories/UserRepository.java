@@ -6,7 +6,7 @@ import fr.formation.back3DePrint.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long>  {
 	
-	UserRepository findByUserId(Long userId);
+	UserRepository findByUserName(String userName);
 	
 
 }
