@@ -16,5 +16,4 @@ public interface UserViewDto {
 	String getTown();
 	int getZipCode();
 	String getCountry();
-	String getRole();
 }

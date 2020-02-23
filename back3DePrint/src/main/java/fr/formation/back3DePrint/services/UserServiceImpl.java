@@ -17,6 +17,7 @@ public class UserServiceImpl implements UserService {
     public void create(UserDto dto) {
 	// TODO Auto-generated method stub
 	User user = new User();
+	user.setUsername(dto.getUserName());
 	user.setGender(dto.getGender());
 	user.setFirstName(dto.getFirstName());
 	user.setLastName(dto.getLastName());

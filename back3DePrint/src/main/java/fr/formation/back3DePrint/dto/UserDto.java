@@ -15,6 +15,7 @@ public class UserDto {
 	@Size(max = 255)
 	private String userName ;
 	
+
 	@NotEmpty
 	@Size(max = 5)
    private String gender ;
@@ -62,6 +63,13 @@ public class UserDto {
 	public UserDto() {
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getGender() {
 		return gender;
 	}
