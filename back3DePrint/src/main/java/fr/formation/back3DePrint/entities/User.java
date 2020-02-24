@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+
+import fr.formation.back3DePrint.dto.UserAddressDTO;
 
 
 @Entity()
@@ -46,21 +50,9 @@ public class User {
 	@Column(length=255, nullable = false, unique = true)	
     private String email;
     
-    @NotBlank
-	@Column(length=5, nullable = false)		
-    private int streetNumber;
+	@Embedded
+	private @Valid UserAddress userAddress;
     
-	@Column(length=255, nullable = false)	
-    private String street;
-	
-	@Column(length=100, nullable = false)		
-    private String town;
-    
-	@Column(length=5, nullable = false)		
-    private int zipCode;
-	
-	@Column(length=100, nullable = false)	
-    private String country;
     
 	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "custom_user_role",
@@ -92,10 +84,11 @@ public class User {
      * @param username a unique username
      * @param roles    some roles
      * @param enabled  {@code true} if enabled; {@code false} otherwise
+     * @param userAddress 
      */
 	public User(Long id, String userName, String gender, String firstName, String lastName, Date dateOfBirth,
 			String password, String email, @NotBlank int streetNumber, String street, String town, int zipCode,
-			String country, Set<Role> roles, boolean enabled) {
+			String country, Set<Role> roles, boolean enabled, UserAddress userAddress) {
 		this.id = id;
 		this.userName = userName;
 		this.gender = gender;
@@ -104,11 +97,7 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 		this.password = password;
 		this.email = email;
-		this.streetNumber = streetNumber;
-		this.street = street;
-		this.town = town;
-		this.zipCode = zipCode;
-		this.country = country;
+		this.userAddress = userAddress;
 		this.roles = roles;
 		this.enabled = enabled;
 	}
@@ -198,53 +187,13 @@ public class User {
 	}
 
 
-	public int getStreetNumber() {
-		return streetNumber;
+	public UserAddress getUserAddress() {
+		return userAddress;
 	}
 
 
-	public void setStreetNumber(int streetNumber) {
-		this.streetNumber = streetNumber;
-	}
-
-
-	public String getStreet() {
-		return street;
-	}
-
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-
-	public String getTown() {
-		return town;
-	}
-
-
-	public void setTown(String town) {
-		this.town = town;
-	}
-
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
-
-
-	public String getCountry() {
-		return country;
-	}
-
-
-	public void setCountry(String country) {
-		this.country = country;
+	public void setUserAddress(@Valid UserAddress userAddressDTO) {
+		this.userAddress = userAddressDTO;
 	}
 
 

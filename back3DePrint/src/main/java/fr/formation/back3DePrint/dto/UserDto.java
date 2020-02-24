@@ -5,9 +5,12 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import fr.formation.back3DePrint.entities.UserAddress;
 
 public class UserDto {
 	   
@@ -38,27 +41,9 @@ public class UserDto {
 	@NotEmpty
 	@Size(max = 255)	
    private String email;
-   
-	@NotEmpty
-	@Size(max = 5)		
-   private int streetNumber;
-   
-	@NotEmpty
-	@Size(max = 255)	
-   private String street;
 	
-	@NotEmpty
-	@Size(max = 100)		
-   private String town;
-   
-	@NotEmpty
-	@Size(max = 5)		
-   private int zipCode;
-	
-	@NotEmpty
-	@Size(max = 100)
-   private String country;
-   
+   @Valid
+	private UserAddress userAddress;
 
 	public UserDto() {
 	}
@@ -67,6 +52,8 @@ public class UserDto {
 		return userName;
 	}
 	
+
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -118,45 +105,17 @@ public class UserDto {
 		this.email = email;
 	}
 
-	public int getStreetNumber() {
-		return streetNumber;
+	public UserAddress getUserAddress() {
+		return userAddress;
 	}
 
-	public void setStreetNumber(int streetNumber) {
-		this.streetNumber = streetNumber;
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
 	}
 
-	public String getStreet() {
-		return street;
-	}
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
 
-	public String getTown() {
-		return town;
-	}
-
-	public void setTown(String town) {
-		this.town = town;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
+	
 	
 
 }

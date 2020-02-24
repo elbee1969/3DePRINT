@@ -24,11 +24,7 @@ public class UserServiceImpl implements UserService {
 	user.setDateOfBirth(dto.getDateOfBirth());
 	user.setPassword(dto.getPassword());
 	user.setEmail(dto.getEmail());
-	user.setStreetNumber(dto.getStreetNumber());
-	user.setStreet(dto.getStreet());
-	user.setTown(dto.getTown());
-	user.setZipCode(dto.getZipCode());
-	user.setCountry(dto.getCountry());
+	user.setUserAddress(dto.getUserAddress());
 	userRepo.save(user);
     }
 
